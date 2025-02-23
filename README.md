@@ -1,2 +1,13 @@
-# codingTestPrep
-Advanced coding test preparation through daily grass planting and basic languages (C, Java, Python)
+# Advanced Coding-Test Prep
+
+### How to plan
+
+```
+> 본 스터디를 통해 알고리즘과 자료구조의 심도 있는 활용을 통해 한 단계 도약하고자 함.
+> 실무에서 주로 사용중인 Java는 물론 C, C++, Python 등 다양한 프로그래밍 언어로 문제 해결 능력을 극대화하기 위함.
+```
+
+
+### Overview
+
+&nbsp; 프로그래머스 레벨 1 기준 각 언어를 숙지하며 레벨 2 를 통한 기초적 학습, 레벨 3 이상의 심화학습으로 구성됨
