@@ -7,7 +7,21 @@
 > 실무에서 주로 사용중인 Java는 물론 C, C++, Python 등 다양한 프로그래밍 언어로 문제 해결 능력을 극대화하기 위함.
 ```
 
+### Daily Logs
 
-### Overview
+> Day 1
+  Basics (https://school.programmers.co.kr/learn/challenges/training?order=recent&page=1&languages=c%2Ccpp%2Cpython)
+  1. 문자열을 정수로 변환하기
+  2. a와 b 출력하기
+  3. 문자열 반복해서 출력하기
+  4. 대소문자 바꿔서 출력하기
+  5. 특수문자 출력하기
+  6. 덧셈식 출력하기
+  7. 문자열 붙여서 출력하기
+  8. 문자열 돌리기
+  9. 홀짝 구분하기
+  10. 문자열 겹쳐쓰기
 
-&nbsp; 프로그래머스 레벨 1 기준 각 언어를 숙지하며 레벨 2 를 통한 기초적 학습, 레벨 3 이상의 심화학습으로 구성됨
+  Advanced
+  1. [PCCP 기출문제] 1번 / 동영상 재생기 
+  2. [PCCP 기출문제] 1번 / 붕대 감기
