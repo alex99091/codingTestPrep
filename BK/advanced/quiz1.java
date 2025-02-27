@@ -50,73 +50,75 @@ video_len	pos	op_start	op_end	commands	result
 시작 위치 4분 5초는 오프닝 구간이기 때문에 오프닝이 끝나는 위치인 4분 7초로 이동합니다. 4분 7초에서 10초 후로 이동하면 4분 17초입니다. 따라서 "04:17"을 return 하면 됩니다.
  */
 
-class Solution {
-    private String video_len;
-    private String pos;
-    private String op_start;
-    private String op_end;
-
-    public String solution(String video_len, String pos, String op_start, String op_end, String[] commands) {
-        this.video_len = video_len;
-        this.pos = pos;
-        this.op_start = op_start;
-        this.op_end = op_end;
-
-        int time = calcTime(pos); 
-        int srt = calcTime(op_start);
-        int end = calcTime(op_end);
-
-        if (time >= srt && time <= end) {
-            time = end;
-        }
-        
-        for (String command : commands) {
-            if ("next".equals(command)) {
-                time = next(time);
-            } else if ("prev".equals(command)) {
-                time = prev(time);
-            }
-        }
-
-        return calcTime(time);
-    }
-
-    public int calcTime(String input) {
-        String[] time = input.split(":");
-        int minute = Integer.parseInt(time[0]);
-        int second = Integer.parseInt(time[1]);
-        return minute * 60 + second;
-    }
-
-    public String calcTime(int input) {
-        int minute = input / 60;
-        int second = input % 60;
-        return String.format("%02d:%02d", minute, second);
-    }
-
-    public int prev(int time) {
-        time -= 10;
-        time = checkOp("prev", time);
-        return Math.max(time, 0);
-    }
-
-    public int next(int time) {
-        time = checkOp("next", time);
-        time += 10;
-        int max = calcTime(video_len);
-        return Math.min(time, max);
-    }
-
-    public int checkOp(String command, int time) {
-        int srt = calcTime(op_start);
-        int end = calcTime(op_end);
-
-        if ("prev".equals(command) && time >= srt && time <= end) {
-            return srt;
-        } else if ("next".equals(command) && time >= srt && time <= end) {
-            return end;
-        }
-        
-        return time; 
-    }
-}
+ class Solution {
+     private String video_len;
+     private String pos;
+     private String op_start;
+     private String op_end;
+ 
+     public String solution(String video_len, String pos, String op_start, String op_end, String[] commands) {
+         this.video_len = video_len;
+         this.pos = pos;
+         this.op_start = op_start;
+         this.op_end = op_end;
+ 
+         int time = calcTime(pos);
+         int srt = calcTime(op_start);
+         int end = calcTime(op_end);
+ 
+         if (time >= srt && time <= end) {
+             time = end;
+             pos = calcTime(time);
+         }
+ 
+         for (String command : commands) {
+             if ("next".equals(command)) {
+                 time = next(time);
+             } else if ("prev".equals(command)) {
+                 time = prev(time);
+             }
+         }
+ 
+         return calcTime(time);
+     }
+ 
+     public int calcTime(String input) {
+         String[] time = input.split(":");
+         int minute = Integer.parseInt(time[0]);
+         int second = Integer.parseInt(time[1]);
+         return minute * 60 + second;
+     }
+ 
+     public String calcTime(int input) {
+         int minute = input / 60;
+         int second = input % 60;
+         return String.format("%02d:%02d", minute, second);
+     }
+ 
+     public int prev(int time) {
+         time -= 10;
+         time = checkOp("prev", time);  // 🔥 checkOp 결과 반영
+         return Math.max(time, 0);
+     }
+ 
+     public int next(int time) {
+         time += 10;  // 🔥 10초 증가 먼저 수행
+         time = checkOp("next", time);  // 🔥 이후 checkOp 실행
+         int max = calcTime(video_len);
+         return Math.min(time, max);
+     }
+ 
+     public int checkOp(String command, int time) {
+         int srt = calcTime(op_start);
+         int end = calcTime(op_end);
+ 
+         if ("prev".equals(command) && time >= srt && time <= end) {
+             return srt;  // 🔥 prev는 srt로 이동해야 함
+         } else if ("next".equals(command) && time >= srt && time <= end) {
+             return end;  // 🔥 next는 end로 이동해야 함
+         }
+ 
+         return time; 
+     }
+ }
+ 
